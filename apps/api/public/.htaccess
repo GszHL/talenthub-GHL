@@ -1,0 +1,6 @@
+DirectoryIndex index.php
+RewriteEngine On
+RewriteEngine .* - [e=HTT_AUTHORIZATION:%{HTTP:authorization}]
+Rewritecond %{REQUEST_FILENAME} !-f 
+RewriteCond % {REQUEST_FILENAME} !-d 
+Rewriterule ^ index.php [L, QSA]
