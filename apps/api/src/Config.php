@@ -7,7 +7,7 @@ final class Config{
 
     public static function get(string $key): mixed {
         if(self::$values == null) {
-            $file = dirname(__DIR__) . '/../config/config.php';
+            $file = dirname(__DIR__) . '/config/local.php';
             self::$values = is_file($file) ? require $file : [];
          }
         return self::$values[$key] ?? null;
@@ -16,7 +16,7 @@ final class Config{
     public static function required(string $key): string{
         $value = self::get($key);
         if(!is_string($value) || $value === '' || str_contains($value, 'REEMPLAZAR') || $value === 'tu-proyecto') {
-            throw new ApiException('configura' .$key . ' en config/local.php', 503);
+            throw new ApiException('configura nuevo' .$key . ' en config/local.php', 503);
 
         }
         return $value;
